@@ -39,8 +39,9 @@ public class FundController {
 		List<Transaction> transactions=fundService.transferFund(balanceRequest);
 		return new ResponseEntity(transactions,HttpStatus.OK);
 	}
-	@GetMapping()
-	public ResponseEntity<List<Transaction>> getMonthlystatement(@RequestParam("monthName") String monthName, @RequestParam("year") String year ){
-		return null;
+	@GetMapping("/statement")
+	public ResponseEntity<List<Transaction>> getMonthlystatement(@RequestParam("month") Integer month, @RequestParam("year") Integer year ) throws FundException{
+		List<Transaction> statement=fundService.getMonthlyStatement(month, year);
+		return new ResponseEntity(statement,HttpStatus.OK);
 	}
 }

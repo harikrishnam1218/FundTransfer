@@ -17,5 +17,7 @@ public interface FundService {
  User getUserData(Long uid) throws UserNotFoundException;
  
  List<Transaction> transferFund(TransferBalanceRequest request) throws FundException;
+ 
+ List<Transaction> getMonthlyStatement(Integer month,Integer year) throws FundException;
 	
 }

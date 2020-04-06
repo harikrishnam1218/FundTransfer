@@ -137,6 +137,15 @@ public class FundServiceImpl implements FundService{
 		
 		return transationList;
 	}
+
+	@Override
+	public List<Transaction> getMonthlyStatement(Integer month, Integer year) throws FundException {
+		List<Transaction> transactionList=transactionRepo.statement(month, year);
+		if(Objects.isNull(transactionList) && transactionList.isEmpty()) {
+			throw new FundException("Transaction List Empty for this  year and month");
+		}
+		return transactionList;
+	}
 	
 	
 }
